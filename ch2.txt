@@ -1,0 +1,53 @@
+domain name,網域名稱
+domestic exporter,(國內的) 出口商
+domain name system,網功能變數名稱系統 (=DNS)
+DOS,磁片作業系統
+double click,按兩下
+download information,下載資料
+downstream,下游的、下傳的
+downstream data,下流的資料
+downtime,停機時間
+doze mode,休眠模式
+DPI,每英吋點數、解析度或是深層封包檢測
+drill down,向下探究、詳細分解、向下鑽取
+decision support system,決策支援系統 (=DSS)
+duplication,複製、完全相同複製品
+e-book,電子書
+e-business,電子化企業
+e-commerce,電子商務 (=EC)
+e-government,電子化政府
+executive information system,高階主管資訊系統 (=EIS)
+e-learning,數位學習
+electronic business,電子化企業
+electronic commerce,電子商務
+electronic government,電子化政府
+electronic payment services,電子付費服務
+electronic payment system,電子付款系統
+electronic signature,電子簽章
+encryption,加密
+end users,終端使用者
+enterprise information portal,企業資訊入口網站
+entity relationship,實體關係
+EPS,電子收付費服務
+Ethernet,乙太網路
+executable code,可執行碼
+Facebook,臉書
+FALSE,假
+fiber,光纖
+field name,欄位名稱
+file processing,檔案處理
+file type,檔案類型
+firewall,防火牆
+flash ROM,快閃記憶體
+flowchart,流程圖
+font,字型
+forensics,鑑識、辯論練習、辯論術
+formatted disk,已格式化的磁碟
+freeware,自由軟體、免費軟體
+gigahertz,十億赫茲 (=GHz)
+gateway,閘道器
+geographic information system,地理資訊系統 (=GIS)
+gigabyte,十億位元組 (=GB)
+graphics,圖形、製圖、製圖法、繪圖學、圖解
+HDD,硬式磁碟機
+global positioning system,全球定位系統 (=GPS)
