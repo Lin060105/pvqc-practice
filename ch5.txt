@@ -1,0 +1,51 @@
+online analytical processing,線上分析處理 (=OLAP)
+on-demand,隨需、即需
+online transaction,線上交易
+online transaction processing,線上交易處理 (=OLTP)
+open standard,開放式標準
+operating system,作業系統
+optical disc,光碟
+option button,選項按鈕
+open source,開放原始 (碼)
+open system,開放式系統
+optimization,優化、最佳化
+outsourcing,外包
+parallel transmission,並列傳輸
+output unit,輸出單元 (=OU)
+parameter,參數
+personal computer,個人電腦 (=PC)
+peripheral,周邊設備
+human resource,人力資源
+personal information,個人資訊
+phishing,網路釣魚
+pixel,像素
+post office protocol,郵件協定 (=POP)
+pharming,網址嫁接、網域欺騙技術
+pivot table,樞紐分析表、關鍵的報表
+point-to-point protocol,點對點協定
+portability,可攜型
+portable computer,可攜型電腦
+POS,銷售時點情報系統
+power supply,電源供應器
+pages per minute,每分鐘列印的頁數 (=PPM)
+portal,入口網站
+power-on self-test,開機自我測試 (=POST)
+power cord,電源線
+PPTP,點對點通道協定
+primary partition,主要分割區
+process control system,流程控制系統
+primary key,主鍵
+private key,私密金鑰
+programming,程式設計
+project,專案
+property,屬性、財產、所有權、內容
+pseudo code,虛擬碼
+programming language,程式語言
+projector,投影機
+protocol,協定
+public key,公開金鑰
+quick sort,快速排序法
+quick response code,快速反應碼 (=QR code)
+radio frequency,無線電頻率；射頻
+random access memory,隨機存取記憶體 (=RAM)
+rechargeable battery,可充電式電池
