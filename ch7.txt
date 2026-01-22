@@ -1,0 +1,49 @@
+upstream,上游的、向上串流的
+USB,萬用序列匯流排
+value chain model,價值鏈模型
+vector,向量
+visualization,視覺化、形象化
+VoIP,透過IP做語音傳送
+warehouse,倉儲、倉庫
+webcam,網路攝像機
+weblog,網誌、網站的紀錄
+window,視窗
+wireless,無線
+wireless technology,無線科技
+wiki,維基
+Windows,微軟公司開發的作業系統
+wizard,精靈
+word processing,文字處理
+worm,蠕蟲
+XML,延伸性標示語言
+YouTube,一種手機與電腦皆可連線的專門放影
+agent,代理人;經銷商
+administrator,管理人員,行政人員
+analysis,分析
+analog,類似; 相似
+architecture,建築物
+array,排列,編隊,軍隊
+asset,財產，資產
+auction,拍賣
+audit,(政府的) 審計，查帳 (通常為一年)
+audio,聽覺的，聲音的
+authority,權力
+base,卑鄙的;自私
+battery,電池
+benefit,有益於;受惠
+bit,一小塊;少許
+bridge,橋
+broadcast,廣播
+broadcaster,播送設備, 播報員
+broker,掮客
+bug,昆蟲
+buffer,緩衝器
+business,職業;工作;貿易商業;工商企業;私人關
+byte,位元組
+call,大聲說話;打電話;呼喚;訪問;靠岸;停
+catalog,目錄/編目
+cell,小囚房
+cell phone,行動電話 ; 手機
+certificate,證明，單據
+character,人物 ; 角色
+chat,閒聊;閒談
