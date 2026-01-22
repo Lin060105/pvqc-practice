@@ -1,0 +1,53 @@
+light emitting diode,發光二極體 (=LED)
+Line,在線
+line interactive,在線互動式
+linker,連結器
+Linux,Linux作業系統
+loader,載入程式
+log off,登出
+log on,登入
+logical partition,邏輯分割區
+Macintosh,麥金塔
+macro,巨集
+main memory,主記憶體
+malicious program,惡意程式
+management information systems,管理資訊系統
+manipulation,處理、操縱、操作、控制
+marketplace,市集、集會場所
+megabyte,百萬位元組 (=MB)
+message box,訊息視窗
+Metcalfe's law,梅特卡夫定律
+megahertz,百萬赫茲 (=MHz)
+metadata,定義的資料、詮釋資料、元資料
+microprocessor,微處理器
+microsecond,微秒
+Microsoft,微軟
+midrange system,中型系統
+millennium,千禧年
+millisecond,毫秒
+mobile communication,行動通訊
+mobile network,行動網路
+mobile wallet,手機錢包
+modulation,調變
+multicore,多核心的、多芯的
+modem,數據機
+module,模組
+motherboard,主機板
+memory unit,記憶單元 (=MU)
+multiplexer,多工器
+nano,奈米
+network address translation,網路位址轉換 (=NAT)
+network operating system,網路作業系統
+network terminal,網路終端機
+nanosecond,奈秒
+network server,網路伺服器
+network interface card,網路卡 (=NIC)
+Nokia,諾基亞
+normalization,正規化
+N-tier client-server architecture,多層式主從式架構
+node,節點
+non-repudiation,不可否認性
+office automation,辦公室自動化 (=OA)
+object-oriented language,物件導向語言
+offline,離線
+offshoring,離岸外包
