@@ -1,0 +1,54 @@
+critical thinking,批判性思考
+CTO,科技長
+customer relationship management,顧客關係管理 (=CRM)
+cyber,網路的、電腦的
+customization,客製化
+dashboard,儀表板
+data bus,資料匯流排
+data center,資訊中心
+data conversion,資料轉換
+data definition,資料定義
+data dictionary,資料字典
+data flow,資料流
+data integration,資料整合
+data management,資料管理
+data management software,資料管理軟體
+data manipulation,資料操縱
+data mining,資料探勘、資料挖掘
+data processing,資料處理
+data redundancy,資料重複
+data structure,資料結構
+data warehouse,資料倉儲
+database,資料庫 (=DB)
+database administrator,資料庫管理員 (=DBA)
+database management system,資料庫管理系統 (=DBMS)
+database server,資料庫伺服器
+data-driven,資料導向
+datagram,數據包、資料包
+data transfer rate,資料傳輸率
+data worker,資料工作者
+debug,除錯
+decryption,解密
+deep packet,深層封包
+desktop,桌面
+desktop computer,桌上電腦
+detection system,偵測系統
+development,開發、發展
+diagram,圖表、圖解
+digital asset,數位資產
+digital camera,數位相機
+digital certificate,數位憑證
+digital divide,數位區隔、數位落差
+digital video disc,數位影音光碟
+data flow diagram,資料流程圖 (=DFD)
+digital content,數位內容
+digital signal,數位信號
+disaster recovery,災難復原
+disk cache,磁碟快取
+disruptive,破壞性的、分裂的
+disruptive technology,破壞性科技
+distance instruction,遠距教學
+distributed processing,分散式處理
+distributed processing system,分散式處理系統
+do it yourself,自己做 (=DIY)
+documentation,使用說明
