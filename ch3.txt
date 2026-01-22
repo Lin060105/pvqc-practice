@@ -1,0 +1,50 @@
+global positioning system,全球定位系統 (=GPS)
+hard disk,硬碟
+home page,首頁
+hub,集線器
+hyperlink,超連結
+hypermedia,超媒體
+hypertext,超檔、超文字
+hypertext markup language,超文字標記語言
+hypertext transfer protocol,超文字傳輸協定
+IaaS,基礎設施即服務
+HTML,超文字標記語言
+integrated circuit,積體電路 (=IC)
+IEEE,國際電機電子工程學會
+Infomediary,資訊仲介
+icon,圖示
+implementation process,建置流程
+information and communication technology,資訊及通訊科技 (=ICT)
+information appliance,資訊裝置
+information processing,資訊處理
+information requirement,資訊需求
+information system,資訊系統 (=IS)
+information technology,資訊科技
+infrastructure as a service,基礎設施即服務
+input device,輸入裝置
+insertion sort,插入排序法
+installation,安裝
+instant messaging,即時通訊 (=IM)
+intangible,無形的、不明確的
+integrated circuit card,IC卡
+integrated package,整合式套件
+integrity,完整性、完善、正直、誠實
+Intel,英特爾
+intellectual property,智慧財產
+internal code,內碼
+internal modem,內置式數據機
+Internet bank,網路銀行
+Inter-network processor,跨網處理器
+iOS,一種iPhone手機的作業系統
+Internet protocol,網際網路協定 (=IP)
+jumper,跳線
+kilobyte,千位元組 (=KB)
+key word,關鍵字
+kilohertz,千赫茲 (=KHz)
+knowledge engineer,知識工程師
+knowledge worker,知識工作者
+local area network,區域網路 (=LAN)
+laser printer,雷射印表機
+liquid crystal display,液晶顯示器 (=LCD)
+Lenovo,聯想
+life cycle,生命週期
