@@ -1,0 +1,54 @@
+refresh rate,更新率
+relational model,關聯式模型
+replication,覆寫、複製品或是按比例縮小的複製
+referential integrity,參照完整性
+relational database,關聯式資料庫
+relationship,關係
+requirement,需求、要求
+risk,風險
+router,路由器
+revenue model,獲利模式、收入模式
+read-only memory,唯讀記憶體 (=ROM)
+routing,規劃路徑
+Samsung,森松、三星
+communications satellite,通訊衛星
+secure digital,安全數位卡 (=SD)
+secure digital extended capacity,安全數位元延伸高容量 (=SDXC)
+scanner,掃描器
+search engine,搜尋引擎
+secondary storage,次級儲存體
+sector,磁區
+secure digital high capacity,安全數位元高容量卡 (=SDHC)
+semiconductor memory,半導體記憶體
+senior,大四學生、長輩
+senior,高階的、資深的
+serial port,序列埠
+shareware,共用軟體
+six sigma,六個標準差
+Skype,一種電話手機與電腦皆可連線的通訊
+serial transmission,串列傳輸
+secure electronic transactions,安全電子交易 (=SET)
+sizing handles,尺寸控點
+smart card,智慧卡
+sniffer,網路監聽
+software resource,軟體資源
+smartphone,智慧型手機
+solid state,固態
+spam,垃圾郵件
+spreadsheet software,試算表軟體
+standby mode,待命模式
+swapping,交換、交換技術
+TCP/IP,傳輸控制協定/網路協定
+systems specification,系統規格
+technical feasibility,技術可行性
+telecommunication media,電信通訊媒介
+telecommunication network,電信通訊網路
+textbox,文字方塊
+timer,計時器
+telecommunication software,電信通訊軟體
+terabyte,百萬位元組 (=TB)
+transistor,電晶體
+transparency,透明度、幻燈片
+Unicode,萬國碼
+username,用戶名稱
+TRUE,真
