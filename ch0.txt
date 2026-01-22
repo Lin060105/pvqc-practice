@@ -1,0 +1,56 @@
+wireless access point,無線網路存取、無線基地台
+accounting information system,會計資訊系統
+act,法案
+access time,存取時間
+Acer,宏碁
+algorithm,演算法
+antivirus software,防毒軟體
+all rights reserved,版權所有、保留所有權利
+Android,安卓
+antivirus,防毒
+Apple,蘋果
+ASUS,華碩
+autocomplete,自動完成
+autosum,自動加總
+back color,背景顏色
+backbone,骨幹網路
+autoformat,自動套用格式、格式自動設定
+back up data,備份資料
+bandwidth,頻寬
+baseband transmission,基頻傳輸
+batch processing,批次處理
+bulletin board system,電子佈告欄系統 (=BBS)
+biometrics,生物測定學、生物計量學
+bps,每秒的位元元素
+bitmap,點陣圖
+Bluetooth,藍芽
+broadband,寬頻、寬頻帶、寬帶
+broadband,多頻率的
+broadband transmission,寬頻傳輸
+business model,商業模式
+certificate authority,認證機構、憑證授權 (=CA)
+cache memory,快取記憶體
+business process and operation,企業流程與營運
+cache,快取
+computer-assisted instruction,電腦輔助教學 (=CAI)
+CD-R,可錄式光碟
+chief information officer,資訊長
+child domain,子網域
+client-server LAN,主從式區域網路
+CIO,資訊長
+clone computer,克隆電腦、複製的電腦
+cloud computing,雲端運算
+coaxial cable,同軸電纜
+co-location,主機代管
+computer crime,電腦犯罪
+computer monitoring,電腦監控
+computer vision,電腦視力、電腦視覺
+computer forensics,電腦鑑識
+computer software,電腦軟體
+computer-aided design,電腦輔助設計
+computer-aided manufacturing,電腦輔助製造
+confidentiality,機密性
+control unit,控制單元
+conference call,電話會議
+content management,內容管理
+central processing unit,中央處理單元 (=CPU)
