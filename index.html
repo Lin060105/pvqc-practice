@@ -3,57 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>PVQC 隨身刷題 (V2 地獄升級版)</title>
+    <title>PVQC 隨身刷題 (終極完整版)</title>
     <style>
         body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #f0f2f5; color: #333; margin: 0; padding: 15px; text-align: center; -webkit-tap-highlight-color: transparent; }
         .container { max-width: 600px; margin: 0 auto; background: white; padding: 20px; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
         
         h1 { font-size: 1.4rem; color: #2c3e50; margin: 10px 0 15px 0; }
-        textarea { width: 100%; height: 120px; border: 2px solid #eee; border-radius: 12px; padding: 12px; font-size: 14px; box-sizing: border-box; -webkit-appearance: none; }
+        textarea { width: 100%; height: 100px; border: 2px solid #eee; border-radius: 12px; padding: 12px; font-size: 14px; box-sizing: border-box; -webkit-appearance: none; }
         textarea:focus { border-color: #3498db; outline: none; }
         
         .log-area { font-size: 0.85rem; color: #e74c3c; text-align: left; background: #fff5f5; padding: 8px; border-radius: 6px; margin-top: 10px; display: none; }
 
-        .btn-group { display: flex; flex-direction: column; gap: 12px; margin-top: 15px; }
-        .btn { padding: 16px; border: none; border-radius: 12px; font-size: 17px; font-weight: 600; cursor: pointer; color: white; transition: transform 0.1s; }
+        /* 測驗選單排版 */
+        .btn-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 15px; }
+        .btn { padding: 14px 8px; border: none; border-radius: 10px; font-size: 15px; font-weight: 600; cursor: pointer; color: white; transition: all 0.1s; display: flex; align-items: center; justify-content: center; flex-direction: column;}
         .btn:active { transform: scale(0.97); }
+        .btn span { font-size: 0.75rem; font-weight: normal; opacity: 0.9; margin-top: 3px; }
         
-        .btn-spell { background: linear-gradient(135deg, #ff7675, #d63031); }
-        .btn-read { background: linear-gradient(135deg, #74b9ff, #0984e3); }
-        .btn-listen { background: linear-gradient(135deg, #ffeaa7, #fdcb6e); color: #444; }
-        .btn-evil { background: linear-gradient(135deg, #a29bfe, #6c5ce7); } /* 地獄模式按鈕顏色 */
-        .btn-back { background: #636e72; margin-top: 30px; width: 100%; }
+        .btn-t1 { background: linear-gradient(135deg, #ff7675, #d63031); grid-column: span 2;}
+        .btn-t2 { background: linear-gradient(135deg, #74b9ff, #0984e3); }
+        .btn-t3 { background: linear-gradient(135deg, #ffeaa7, #fdcb6e); color: #444; }
+        .btn-t4 { background: linear-gradient(135deg, #a29bfe, #6c5ce7); grid-column: span 2;}
+        .btn-t5 { background: linear-gradient(135deg, #55efc4, #00b894); color: #2d3436; }
+        .btn-t6 { background: linear-gradient(135deg, #81ecec, #00cec9); color: #2d3436; }
+        
+        .btn-submit { background: #2d3436; margin-top: 15px; width: 100%; font-size: 18px; padding: 16px;}
+        .btn-back { background: #636e72; margin-top: 30px; width: 100%; grid-column: span 2;}
 
         .hidden { display: none !important; }
         
         .stat-bar { display: flex; justify-content: space-between; color: #636e72; font-size: 0.9rem; margin-bottom: 20px; font-weight: bold; }
-        .question-box { min-height: 80px; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; font-weight: bold; color: #2d3436; margin: 10px 0 20px; word-break: break-word; }
+        .question-box { min-height: 80px; display: flex; align-items: center; justify-content: center; flex-direction: column; font-size: 1.8rem; font-weight: bold; color: #2d3436; margin: 10px 0 20px; word-break: break-word; }
+        .question-sub { font-size: 1rem; color: #b2bec3; font-weight: normal; margin-top: 5px; }
         
         input[type="text"] { width: 100%; padding: 15px; font-size: 20px; border: 2px solid #dfe6e9; border-radius: 10px; text-align: center; box-sizing: border-box; -webkit-appearance: none; }
         input[type="text"]:focus { border-color: #3498db; }
 
-        .option-btn { background: #fff; border: 2px solid #f1f2f6; width: 100%; padding: 15px; margin-bottom: 10px; border-radius: 10px; font-size: 1.1rem; color: #2d3436; text-align: left; font-weight: 500; }
-        .option-btn:active { background: #f1f2f6; }
+        .option-btn { background: #fff; border: 2px solid #f1f2f6; width: 100%; padding: 16px; margin-bottom: 10px; border-radius: 10px; font-size: 1.1rem; color: #2d3436; text-align: left; font-weight: 500; transition: all 0.2s;}
+        
+        /* 音檔模式的選取特效 */
+        .option-btn.selected { border-color: #0984e3; background: #e3f2fd; transform: scale(1.02); box-shadow: 0 4px 10px rgba(9, 132, 227, 0.2); }
+        
         .option-btn.correct { background: #00b894; color: white; border-color: #00b894; }
         .option-btn.wrong { background: #ff7675; color: white; border-color: #ff7675; }
-        
-        /* 讓英文混淆選項字體更清楚，方便辨識拼字 */
         .evil-font { font-family: 'Courier New', Courier, monospace; font-size: 1.25rem; font-weight: bold; letter-spacing: 0.5px; }
     </style>
 </head>
 <body>
 
 <div class="container" id="setup-screen">
-    <h1>PVQC 刷題 (V2)</h1>
+    <h1>🏆 PVQC 專業級全真模擬器</h1>
     <textarea id="vocab-input" placeholder="請貼上這輪要練的單字..."></textarea>
-    
     <div id="parse-log" class="log-area"></div>
 
-    <div class="btn-group">
-        <button class="btn btn-spell" onclick="startMode('spell')">📝 拼寫特訓</button>
-        <button class="btn btn-read" onclick="startMode('read_choice')">📄 閱讀選中 (看英選中)</button>
-        <button class="btn btn-listen" onclick="startMode('listen_choice')">🎧 聽力選中 (聽音選中)</button>
-        <button class="btn btn-evil" onclick="startMode('listen_spell')">👿 聽音選英 (地獄混淆)</button>
+    <div class="btn-grid">
+        <button class="btn btn-t1" onclick="startMode('spell')">📝 測驗一：看中拼英 <span>(魔王關)</span></button>
+        <button class="btn btn-t2" onclick="startMode('read_choice')">📄 測驗二：看英選中 <span>(秒殺題)</span></button>
+        <button class="btn btn-t3" onclick="startMode('listen_choice')">🎧 測驗三：聽英選中 <span>(關鍵題)</span></button>
+        <button class="btn btn-t4" onclick="startMode('listen_spell')">👿 測驗四：聽音選英 <span>(地獄混淆)</span></button>
+        <button class="btn btn-t5" onclick="startMode('zh_to_audio')">🔊 測驗五：看中選音 <span>(盲測)</span></button>
+        <button class="btn btn-t6" onclick="startMode('en_to_audio')">🔊 測驗六：看英選音 <span>(盲測)</span></button>
     </div>
 </div>
 
@@ -68,12 +77,14 @@
     <div id="area-spell" class="hidden">
         <input type="text" id="ans-input" placeholder="輸入英文..." autocomplete="off" spellcheck="false" autocapitalize="off">
         <div id="spell-feedback" style="height:30px; margin-top:10px; font-weight:bold;"></div>
-        <button class="btn" style="background:#2d3436; margin-top:15px;" onclick="checkSpell()">送出 (Enter)</button>
+        <button class="btn btn-submit" onclick="checkSpell()">送出 (Enter)</button>
     </div>
 
     <div id="area-choice" class="hidden"></div>
+    
+    <button id="btn-audio-submit" class="btn btn-submit hidden" onclick="submitAudioChoice()">確定送出</button>
 
-    <button class="btn btn-back" onclick="goBack()">返回 / 換一組單字</button>
+    <button class="btn btn-back" onclick="goBack()">暫停 / 返回首頁</button>
 </div>
 
 <script>
@@ -83,45 +94,34 @@
     let mode = '';
     let isLocked = false;
     let synth = window.speechSynthesis;
+    let selectedOpt = null;
+    let selectedBtnObj = null;
 
-    // --- 😈 核心演算法：地獄混淆字生成器 ---
+    // 😈 地獄混淆字生成器 (測驗4專用)
     function generateEvilDistractors(correctWord) {
         let distractors = new Set();
         let word = correctWord;
         let lowerWord = word.toLowerCase();
         const replaceAt = (str, index, char) => str.substring(0, index) + char + str.substring(index + 1);
 
-        // 規則 1：視覺盲區 (PVQC 最愛考)
         const visualMap = { 'i': 'l', 'l': 'i', 'm': 'n', 'n': 'm', 'e': 'c', 'c': 'e', 'u': 'v', 'v': 'u' };
         for (let i = 0; i < lowerWord.length; i++) {
             let char = lowerWord[i];
-            if (visualMap[char]) {
-                let isUpper = (word[i] === word[i].toUpperCase());
-                let fakeChar = isUpper ? visualMap[char].toUpperCase() : visualMap[char];
-                distractors.add(replaceAt(word, i, fakeChar));
-            }
+            if (visualMap[char]) distractors.add(replaceAt(word, i, (word[i] === word[i].toUpperCase()) ? visualMap[char].toUpperCase() : visualMap[char]));
         }
 
-        // 規則 2：母音大亂鬥
         const vowels = ['a', 'e', 'i', 'o', 'u'];
         for (let i = 0; i < lowerWord.length; i++) {
             if (vowels.includes(lowerWord[i])) {
                 let randomVowel = vowels[Math.floor(Math.random() * vowels.length)];
-                if (randomVowel !== lowerWord[i]) {
-                    let isUpper = (word[i] === word[i].toUpperCase());
-                    let fakeChar = isUpper ? randomVowel.toUpperCase() : randomVowel;
-                    distractors.add(replaceAt(word, i, fakeChar));
-                }
+                if (randomVowel !== lowerWord[i]) distractors.add(replaceAt(word, i, (word[i] === word[i].toUpperCase()) ? randomVowel.toUpperCase() : randomVowel));
             }
         }
 
-        // 規則 3：相鄰字母反轉
         for (let i = 0; i < word.length - 1; i++) {
             if (lowerWord[i] !== lowerWord[i+1] && lowerWord[i] !== ' ' && lowerWord[i+1] !== ' ') {
                 let chars = word.split('');
-                let temp = chars[i];
-                chars[i] = chars[i+1];
-                chars[i+1] = temp;
+                let temp = chars[i]; chars[i] = chars[i+1]; chars[i+1] = temp;
                 distractors.add(chars.join(''));
             }
         }
@@ -129,7 +129,6 @@
         distractors.delete(word);
         distractors.delete(lowerWord);
 
-        // 防呆：如果字太短變化不夠，暴力隨機補齊
         const alphabet = "abcdefghijklmnopqrstuvwxyz";
         let attempts = 0;
         while (distractors.size < 3 && attempts < 50) {
@@ -146,27 +145,22 @@
             const j = Math.floor(Math.random() * (i + 1));
             [result[i], result[j]] = [result[j], result[i]];
         }
-        // 如果真的生不出3個（例如單字只有2個字母），就回傳現有的
         return result.slice(0, 3);
     }
-    // ----------------------------------------
 
     function parseVocab() {
         const raw = document.getElementById('vocab-input').value.trim();
         const logArea = document.getElementById('parse-log');
-        logArea.style.display = 'none';
-        logArea.innerHTML = '';
+        logArea.style.display = 'none'; logArea.innerHTML = '';
 
         if(!raw) return alert("請先貼上單字！");
 
         let lines = raw.split('\n').map(l => l.trim()).filter(l => l);
-        let parsed = [];
-        let errorLines = [];
+        let parsed = []; let errorLines = [];
         
         for (let i = 0; i < lines.length; i++) {
             let line = lines[i];
-            let hasZh = /[^\x00-\x7F]/.test(line);
-            let hasEn = /[a-zA-Z]/.test(line);
+            let hasZh = /[^\x00-\x7F]/.test(line); let hasEn = /[a-zA-Z]/.test(line);
 
             if (hasZh && hasEn) {
                 let match = line.match(/[^\x00-\x7F]/);
@@ -178,48 +172,43 @@
             }
             if (i + 1 < lines.length) {
                 let next = lines[i+1];
-                let nextZh = /[^\x00-\x7F]/.test(next);
-                if (hasEn && !hasZh && nextZh) {
-                    parsed.push({ en: line, zh: next });
-                    i++;
-                    continue;
+                if (hasEn && !hasZh && /[^\x00-\x7F]/.test(next)) {
+                    parsed.push({ en: line, zh: next }); i++; continue;
                 }
             }
-            errorLines.push(`第 ${i+1} 行無法識別: ${line.substring(0, 10)}...`);
+            errorLines.push(`略過: ${line.substring(0, 10)}...`);
         }
         
         vocabList = parsed;
-
         if (errorLines.length > 0) {
             logArea.style.display = 'block';
-            logArea.innerHTML = `<strong>⚠️ 成功 ${parsed.length} 個，但略過 ${errorLines.length} 行：</strong><br>` + errorLines.slice(0, 2).join('<br>') + (errorLines.length > 2 ? '<br>...' : '');
+            logArea.innerHTML = `⚠️ 成功讀取 ${parsed.length} 個。`;
             if (parsed.length === 0) { alert("完全讀取失敗，請檢查格式"); return false; }
-        } else if (parsed.length === 0) {
-            alert("讀取失敗"); return false; 
-        }
+        } else if (parsed.length === 0) { alert("讀取失敗"); return false; }
         return true;
     }
 
     function startMode(m) {
         if(!parseVocab()) return;
-        mode = m;
-        pool = [...vocabList]; 
-        shuffle(pool);
+        mode = m; pool = [...vocabList]; shuffle(pool);
 
         document.getElementById('setup-screen').classList.add('hidden');
         document.getElementById('game-screen').classList.remove('hidden');
         
-        const titles = { 'spell': '拼寫特訓', 'read_choice': '閱讀選中', 'listen_choice': '聽力選中', 'listen_spell': '聽音選英 (地獄)' };
+        const titles = { 
+            'spell': '測驗一：看中拼英', 'read_choice': '測驗二：看英選中', 'listen_choice': '測驗三：聽英選中', 
+            'listen_spell': '測驗四：聽音選英 (地獄)', 'zh_to_audio': '測驗五：看中選音', 'en_to_audio': '測驗六：看英選音' 
+        };
         document.getElementById('mode-badge').innerText = titles[mode];
         nextQuestion();
     }
 
     function nextQuestion() {
         isLocked = false;
-        if(pool.length === 0) {
-            alert("🎉 這組練完囉！");
-            return goBack();
-        }
+        selectedOpt = null; selectedBtnObj = null;
+        document.getElementById('btn-audio-submit').classList.add('hidden');
+        
+        if(pool.length === 0) { alert("🎉 這組練完囉！"); return goBack(); }
 
         current = pool.pop();
         document.getElementById('q-left').innerText = pool.length + 1;
@@ -228,8 +217,7 @@
         const areaSpell = document.getElementById('area-spell');
         const areaChoice = document.getElementById('area-choice');
         
-        areaSpell.classList.add('hidden');
-        areaChoice.classList.add('hidden');
+        areaSpell.classList.add('hidden'); areaChoice.classList.add('hidden');
         document.getElementById('spell-feedback').innerHTML = '';
         document.getElementById('ans-input').value = '';
 
@@ -239,14 +227,18 @@
             setTimeout(()=>document.getElementById('ans-input').focus(), 100);
         } else if(mode === 'read_choice') {
             display.innerText = current.en;
-            areaChoice.classList.remove('hidden');
-            renderChoices();
-        } else if(mode === 'listen_choice' || mode === 'listen_spell') {
-            // 只要是聽力模式，上面就顯示喇叭圖示
-            display.innerHTML = '<span style="font-size:3rem; cursor:pointer;" onclick="speak()">🔊</span><div style="font-size:1rem; color:#b2bec3; font-weight:normal; margin-top:5px;">(點擊喇叭重聽)</div>';
-            areaChoice.classList.remove('hidden');
-            renderChoices();
-            setTimeout(speak, 300);
+            areaChoice.classList.remove('hidden'); renderChoices();
+        } else if(mode === 'zh_to_audio') {
+            display.innerHTML = `${current.zh}<div class="question-sub">請聽發音選出正確選項</div>`;
+            areaChoice.classList.remove('hidden'); renderChoices();
+        } else if(mode === 'en_to_audio') {
+            display.innerHTML = `${current.en}<div class="question-sub">請聽發音選出正確選項</div>`;
+            areaChoice.classList.remove('hidden'); renderChoices();
+        } else {
+            // mode 3 & 4 (聽題目)
+            display.innerHTML = '<span style="font-size:3.5rem; cursor:pointer;" onclick="speak(\''+current.en+'\')">🔊</span><div class="question-sub">(點擊喇叭重聽)</div>';
+            areaChoice.classList.remove('hidden'); renderChoices();
+            setTimeout(() => speak(current.en), 300);
         }
     }
 
@@ -256,77 +248,120 @@
         const fb = document.getElementById('spell-feedback');
 
         if(val.toLowerCase() === current.en.toLowerCase()) {
-            isLocked = true;
-            fb.innerHTML = '<span style="color:#00b894">✅ Correct!</span>';
-            speak();
-            setTimeout(nextQuestion, 600);
+            isLocked = true; fb.innerHTML = '<span style="color:#00b894">✅ Correct!</span>';
+            speak(current.en); setTimeout(nextQuestion, 600);
         } else {
             fb.innerHTML = `<span style="color:#ff7675">❌</span> <span style="font-size:0.8rem; text-decoration:underline; cursor:pointer;" onclick="alert('${current.en}')">偷看答案</span>`;
-            speak();
-            document.getElementById('ans-input').select();
+            speak(current.en); document.getElementById('ans-input').select();
         }
     }
 
-    // --- 🏗️ 升級版的選項渲染器 ---
     function renderChoices() {
-        const div = document.getElementById('area-choice');
-        div.innerHTML = '';
-        
+        const div = document.getElementById('area-choice'); div.innerHTML = '';
         let finalOptions = [];
+        let isAudioMode = (mode === 'zh_to_audio' || mode === 'en_to_audio');
 
         if (mode === 'listen_spell') {
-            // 😈 地獄模式：產生英文混淆字
             let fakeWords = generateEvilDistractors(current.en);
             finalOptions = fakeWords.map(word => ({ text: word, isCorrect: false }));
             finalOptions.push({ text: current.en, isCorrect: true });
         } else {
-            // 😇 正常模式：抓其他的中文選項
             let distractors = vocabList.filter(v => v.en !== current.en);
-            if (distractors.length === 0) distractors = [...vocabList]; // fallback
+            if (distractors.length === 0) distractors = [...vocabList]; 
             shuffle(distractors);
             
             let fakeOptions = distractors.slice(0, 3);
-            finalOptions = fakeOptions.map(opt => ({ text: opt.zh, isCorrect: false }));
-            finalOptions.push({ text: current.zh, isCorrect: true });
+            finalOptions = fakeOptions.map(opt => ({ 
+                text: isAudioMode ? opt.en : opt.zh, 
+                fullData: opt, isCorrect: false 
+            }));
+            finalOptions.push({ text: isAudioMode ? current.en : current.zh, fullData: current, isCorrect: true });
             
-            // 正常模式如果單字庫不到4個字，補滿按鈕
             while(finalOptions.length < 4 && vocabList.length >= 4) {
-                finalOptions.push({ text: distractors[0].zh, isCorrect: false });
+                finalOptions.push({ text: isAudioMode ? distractors[0].en : distractors[0].zh, fullData: distractors[0], isCorrect: false });
             }
         }
 
-        shuffle(finalOptions); // 打亂正確答案的位置
+        shuffle(finalOptions); 
 
-        finalOptions.forEach(opt => {
+        finalOptions.forEach((opt, idx) => {
             let btn = document.createElement('button');
             btn.className = 'option-btn';
-            btn.innerText = opt.text; 
-            
-            // 如果是地獄模式，把字體換成打字機字體，更容易看清楚拼字差異
-            if (mode === 'listen_spell') {
-                btn.classList.add('evil-font');
-            }
+            btn.optData = opt; 
 
-            btn.onclick = () => {
-                if(isLocked) return;
-                if(opt.isCorrect) {
-                    isLocked = true;
-                    btn.classList.add('correct');
-                    if(mode.includes('listen')) speak();
-                    setTimeout(nextQuestion, 500);
-                } else {
-                    btn.classList.add('wrong');
-                    btn.style.opacity = '0.6';
-                    if(mode.includes('listen')) speak();
-                }
-            };
+            if (isAudioMode) {
+                // 測驗 5 & 6 的特殊按鈕
+                btn.innerText = `🔊 選項 ${String.fromCharCode(65 + idx)} (點擊聽音)`;
+                btn.onclick = () => {
+                    if (isLocked) return;
+                    speak(opt.text);
+                    document.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
+                    btn.classList.add('selected');
+                    selectedOpt = opt; selectedBtnObj = btn;
+                    document.getElementById('btn-audio-submit').classList.remove('hidden');
+                };
+            } else {
+                // 測驗 2, 3, 4 的一般按鈕
+                btn.innerText = opt.text; 
+                if (mode === 'listen_spell') btn.classList.add('evil-font');
+                
+                btn.onclick = () => {
+                    if(isLocked) return;
+                    if(opt.isCorrect) {
+                        isLocked = true; btn.classList.add('correct');
+                        if(mode.includes('listen')) speak(current.en);
+                        setTimeout(nextQuestion, 500);
+                    } else {
+                        btn.classList.add('wrong'); btn.style.opacity = '0.6';
+                        if(mode.includes('listen')) speak(current.en);
+                    }
+                };
+            }
             div.appendChild(btn);
         });
     }
 
-    function speak() {
-        if(!current) return;
-        let txt = current.en.replace(/\(.*\)/, '');
+    // 測驗5, 6 專用的送出邏輯 (開牌機制)
+    function submitAudioChoice() {
+        if (isLocked || !selectedOpt || !selectedBtnObj) return;
+        isLocked = true;
+        document.getElementById('btn-audio-submit').classList.add('hidden');
+
+        // 開牌：把所有按鈕的英文顯示出來
+        document.querySelectorAll('.option-btn').forEach(b => {
+            let opt = b.optData;
+            b.classList.remove('selected');
+            if (opt.isCorrect) {
+                b.classList.add('correct');
+                b.innerText = `✅ ${opt.text} (${opt.fullData.zh})`;
+            } else if (b === selectedBtnObj) {
+                b.classList.add('wrong');
+                b.innerText = `❌ ${opt.text} (${opt.fullData.zh})`;
+            } else {
+                b.innerText = `${opt.text}`;
+            }
+        });
+
+        if (selectedOpt.isCorrect) {
+            speak(selectedOpt.text);
+            setTimeout(nextQuestion, 1200); // 答對的話，給你1.2秒看一下字再跳下一題
+        } else {
+            // 答錯的話，不自動跳下一題，把確認按鈕變成「下一題」
+            let nextBtn = document.getElementById('btn-audio-submit');
+            nextBtn.innerText = "繼續下一題 ➔";
+            nextBtn.onclick = () => {
+                nextBtn.innerText = "確定送出";
+                nextBtn.onclick = submitAudioChoice; // 復原功能
+                nextQuestion();
+            };
+            nextBtn.classList.remove('hidden');
+        }
+    }
+
+    function speak(text) {
+        if(!text) return;
+        synth.cancel(); // 防呆：清除卡住的語音
+        let txt = text.replace(/\(.*\)/, '');
         let u = new SpeechSynthesisUtterance(txt);
         u.lang = 'en-US'; 
         synth.speak(u);
