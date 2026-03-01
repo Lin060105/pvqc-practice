@@ -14,19 +14,26 @@
         
         .log-area { font-size: 0.85rem; color: #e74c3c; text-align: left; background: #fff5f5; padding: 8px; border-radius: 6px; margin-top: 10px; display: none; }
 
+        /* ======== 首頁測驗按鈕排版 ======== 
+           目前設定為 1fr 1fr (代表 2 行，會變成 2x3 的排列)。
+           如果你想改：
+           - 一整排 (1x6)：請改成 grid-template-columns: 1fr;
+           - 3x2 排列：請改成 grid-template-columns: 1fr 1fr 1fr;
+        */
         .btn-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 15px; }
+        
         .btn { padding: 16px 8px; border: none; border-radius: 10px; font-size: 16px; font-weight: 600; cursor: pointer; color: white; transition: all 0.1s; display: flex; align-items: center; justify-content: center;}
         .btn:active { transform: scale(0.97); }
         
-        .btn-t1 { background: linear-gradient(135deg, #ff7675, #d63031); grid-column: span 2;}
+        .btn-t1 { background: linear-gradient(135deg, #ff7675, #d63031); }
         .btn-t2 { background: linear-gradient(135deg, #74b9ff, #0984e3); }
         .btn-t3 { background: linear-gradient(135deg, #ffeaa7, #fdcb6e); color: #444; }
-        .btn-t4 { background: linear-gradient(135deg, #a29bfe, #6c5ce7); grid-column: span 2;}
+        .btn-t4 { background: linear-gradient(135deg, #a29bfe, #6c5ce7); }
         .btn-t5 { background: linear-gradient(135deg, #55efc4, #00b894); color: #2d3436; }
         .btn-t6 { background: linear-gradient(135deg, #81ecec, #00cec9); color: #2d3436; }
         
         .btn-submit { background: #2d3436; margin-top: 15px; width: 100%; font-size: 18px; padding: 16px;}
-        .btn-back { background: #636e72; margin-top: 30px; width: 100%; grid-column: span 2;}
+        .btn-back { background: #636e72; margin-top: 30px; width: 100%; grid-column: 1 / -1;}
 
         .hidden { display: none !important; }
         
@@ -37,11 +44,16 @@
         input[type="text"] { width: 100%; padding: 15px; font-size: 20px; border: 2px solid #dfe6e9; border-radius: 10px; text-align: center; box-sizing: border-box; -webkit-appearance: none; }
         input[type="text"]:focus { border-color: #3498db; }
 
-        .option-btn { background: #fff; border: 2px solid #f1f2f6; width: 100%; padding: 16px; margin-bottom: 10px; border-radius: 10px; font-size: 1.1rem; color: #2d3436; text-align: left; font-weight: 500; transition: all 0.2s;}
+        /* ======== 測驗中的選項排版 (恢復從上到下) ======== */
+        #area-choice { display: flex; flex-direction: column; gap: 10px; width: 100%; }
+        
+        .option-btn { background: #fff; border: 2px solid #f1f2f6; width: 100%; min-height: 60px; padding: 15px; border-radius: 10px; font-size: 1.1rem; color: #2d3436; text-align: left; font-weight: 500; transition: all 0.2s; word-break: break-word;}
         .option-btn.selected { border-color: #0984e3; background: #e3f2fd; transform: scale(1.02); box-shadow: 0 4px 10px rgba(9, 132, 227, 0.2); }
         .option-btn.correct { background: #00b894; color: white; border-color: #00b894; }
         .option-btn.wrong { background: #ff7675; color: white; border-color: #ff7675; }
         .evil-font { font-family: 'Courier New', Courier, monospace; font-size: 1.25rem; font-weight: bold; letter-spacing: 0.5px; }
+        
+        #spell-feedback { height: 35px; margin-top: 10px; font-weight: bold; font-size: 1.5rem; display: flex; align-items: center; justify-content: center;}
     </style>
 </head>
 <body>
@@ -71,7 +83,7 @@
 
     <div id="area-spell" class="hidden">
         <input type="text" id="ans-input" placeholder="輸入英文..." autocomplete="off" spellcheck="false" autocapitalize="off">
-        <div id="spell-feedback" style="height:30px; margin-top:10px; font-weight:bold;"></div>
+        <div id="spell-feedback"></div>
         <button class="btn btn-submit" onclick="checkSpell()">送出</button>
     </div>
 
@@ -241,10 +253,12 @@
         const fb = document.getElementById('spell-feedback');
 
         if(val.toLowerCase() === current.en.toLowerCase()) {
-            isLocked = true; fb.innerHTML = '<span style="color:#00b894">Correct!</span>';
+            isLocked = true; 
+            fb.innerHTML = '<span style="color:#00b894">O</span>';
             setTimeout(nextQuestion, 600);
         } else {
-            fb.innerHTML = `<span style="color:#ff7675">Wrong!</span> <span style="font-size:0.8rem; text-decoration:underline; cursor:pointer;" onclick="alert('${current.en}')">偷看答案</span>`;
+            // 點擊 X 會跳出正確答案
+            fb.innerHTML = `<span style="color:#ff7675; cursor:pointer;" onclick="alert('${current.en}')">X</span>`;
             document.getElementById('ans-input').select();
         }
     }
@@ -283,7 +297,7 @@
             btn.optData = opt; 
 
             if (isAudioMode) {
-                btn.innerText = `🔊 選項 ${String.fromCharCode(65 + idx)} (點擊聽音)`;
+                btn.innerText = `🔊 選項 ${String.fromCharCode(65 + idx)}`;
                 btn.onclick = () => {
                     if (isLocked) return;
                     speak(opt.text);
