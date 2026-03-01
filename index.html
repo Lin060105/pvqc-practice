@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>PVQC 隨身刷題 (終極完整版)</title>
+    <title>PVQC 隨身刷題</title>
     <style>
         body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #f0f2f5; color: #333; margin: 0; padding: 15px; text-align: center; -webkit-tap-highlight-color: transparent; }
         .container { max-width: 600px; margin: 0 auto; background: white; padding: 20px; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
@@ -14,11 +14,9 @@
         
         .log-area { font-size: 0.85rem; color: #e74c3c; text-align: left; background: #fff5f5; padding: 8px; border-radius: 6px; margin-top: 10px; display: none; }
 
-        /* 測驗選單排版 */
         .btn-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 15px; }
-        .btn { padding: 14px 8px; border: none; border-radius: 10px; font-size: 15px; font-weight: 600; cursor: pointer; color: white; transition: all 0.1s; display: flex; align-items: center; justify-content: center; flex-direction: column;}
+        .btn { padding: 16px 8px; border: none; border-radius: 10px; font-size: 16px; font-weight: 600; cursor: pointer; color: white; transition: all 0.1s; display: flex; align-items: center; justify-content: center;}
         .btn:active { transform: scale(0.97); }
-        .btn span { font-size: 0.75rem; font-weight: normal; opacity: 0.9; margin-top: 3px; }
         
         .btn-t1 { background: linear-gradient(135deg, #ff7675, #d63031); grid-column: span 2;}
         .btn-t2 { background: linear-gradient(135deg, #74b9ff, #0984e3); }
@@ -40,10 +38,7 @@
         input[type="text"]:focus { border-color: #3498db; }
 
         .option-btn { background: #fff; border: 2px solid #f1f2f6; width: 100%; padding: 16px; margin-bottom: 10px; border-radius: 10px; font-size: 1.1rem; color: #2d3436; text-align: left; font-weight: 500; transition: all 0.2s;}
-        
-        /* 音檔模式的選取特效 */
         .option-btn.selected { border-color: #0984e3; background: #e3f2fd; transform: scale(1.02); box-shadow: 0 4px 10px rgba(9, 132, 227, 0.2); }
-        
         .option-btn.correct { background: #00b894; color: white; border-color: #00b894; }
         .option-btn.wrong { background: #ff7675; color: white; border-color: #ff7675; }
         .evil-font { font-family: 'Courier New', Courier, monospace; font-size: 1.25rem; font-weight: bold; letter-spacing: 0.5px; }
@@ -52,17 +47,17 @@
 <body>
 
 <div class="container" id="setup-screen">
-    <h1>🏆 PVQC 專業級全真模擬器</h1>
-    <textarea id="vocab-input" placeholder="請貼上這輪要練的單字..."></textarea>
+    <h1>PVQC 專業級全真模擬器</h1>
+    <textarea id="vocab-input" placeholder="請貼上單字..."></textarea>
     <div id="parse-log" class="log-area"></div>
 
     <div class="btn-grid">
-        <button class="btn btn-t1" onclick="startMode('spell')">📝 測驗一：看中拼英 <span>(魔王關)</span></button>
-        <button class="btn btn-t2" onclick="startMode('read_choice')">📄 測驗二：看英選中 <span>(秒殺題)</span></button>
-        <button class="btn btn-t3" onclick="startMode('listen_choice')">🎧 測驗三：聽英選中 <span>(關鍵題)</span></button>
-        <button class="btn btn-t4" onclick="startMode('listen_spell')">👿 測驗四：聽音選英 <span>(地獄混淆)</span></button>
-        <button class="btn btn-t5" onclick="startMode('zh_to_audio')">🔊 測驗五：看中選音 <span>(盲測)</span></button>
-        <button class="btn btn-t6" onclick="startMode('en_to_audio')">🔊 測驗六：看英選音 <span>(盲測)</span></button>
+        <button class="btn btn-t1" onclick="startMode('spell')">測驗一：看中拼英</button>
+        <button class="btn btn-t2" onclick="startMode('read_choice')">測驗二：看英選中</button>
+        <button class="btn btn-t3" onclick="startMode('listen_choice')">測驗三：聽英選中</button>
+        <button class="btn btn-t4" onclick="startMode('listen_spell')">測驗四：聽音選英</button>
+        <button class="btn btn-t5" onclick="startMode('zh_to_audio')">測驗五：看中選音</button>
+        <button class="btn btn-t6" onclick="startMode('en_to_audio')">測驗六：看英選音</button>
     </div>
 </div>
 
@@ -77,14 +72,14 @@
     <div id="area-spell" class="hidden">
         <input type="text" id="ans-input" placeholder="輸入英文..." autocomplete="off" spellcheck="false" autocapitalize="off">
         <div id="spell-feedback" style="height:30px; margin-top:10px; font-weight:bold;"></div>
-        <button class="btn btn-submit" onclick="checkSpell()">送出 (Enter)</button>
+        <button class="btn btn-submit" onclick="checkSpell()">送出</button>
     </div>
 
     <div id="area-choice" class="hidden"></div>
     
     <button id="btn-audio-submit" class="btn btn-submit hidden" onclick="submitAudioChoice()">確定送出</button>
 
-    <button class="btn btn-back" onclick="goBack()">暫停 / 返回首頁</button>
+    <button class="btn btn-back" onclick="goBack()">返回首頁</button>
 </div>
 
 <script>
@@ -97,7 +92,6 @@
     let selectedOpt = null;
     let selectedBtnObj = null;
 
-    // 😈 地獄混淆字生成器 (測驗4專用)
     function generateEvilDistractors(correctWord) {
         let distractors = new Set();
         let word = correctWord;
@@ -182,7 +176,7 @@
         vocabList = parsed;
         if (errorLines.length > 0) {
             logArea.style.display = 'block';
-            logArea.innerHTML = `⚠️ 成功讀取 ${parsed.length} 個。`;
+            logArea.innerHTML = `成功讀取 ${parsed.length} 個。`;
             if (parsed.length === 0) { alert("完全讀取失敗，請檢查格式"); return false; }
         } else if (parsed.length === 0) { alert("讀取失敗"); return false; }
         return true;
@@ -197,7 +191,7 @@
         
         const titles = { 
             'spell': '測驗一：看中拼英', 'read_choice': '測驗二：看英選中', 'listen_choice': '測驗三：聽英選中', 
-            'listen_spell': '測驗四：聽音選英 (地獄)', 'zh_to_audio': '測驗五：看中選音', 'en_to_audio': '測驗六：看英選音' 
+            'listen_spell': '測驗四：聽音選英', 'zh_to_audio': '測驗五：看中選音', 'en_to_audio': '測驗六：看英選音' 
         };
         document.getElementById('mode-badge').innerText = titles[mode];
         nextQuestion();
@@ -208,7 +202,7 @@
         selectedOpt = null; selectedBtnObj = null;
         document.getElementById('btn-audio-submit').classList.add('hidden');
         
-        if(pool.length === 0) { alert("🎉 這組練完囉！"); return goBack(); }
+        if(pool.length === 0) { alert("這組練完囉！"); return goBack(); }
 
         current = pool.pop();
         document.getElementById('q-left').innerText = pool.length + 1;
@@ -222,11 +216,11 @@
         document.getElementById('ans-input').value = '';
 
         if(mode === 'spell') {
-            display.innerText = current.zh;
+            display.innerHTML = current.zh + ' <span style="font-size:1.5rem; cursor:pointer;" onclick="speak(\''+current.en+'\')">🔊</span>';
             areaSpell.classList.remove('hidden');
             setTimeout(()=>document.getElementById('ans-input').focus(), 100);
         } else if(mode === 'read_choice') {
-            display.innerText = current.en;
+            display.innerHTML = current.en + ' <span style="font-size:1.5rem; cursor:pointer;" onclick="speak(\''+current.en+'\')">🔊</span>';
             areaChoice.classList.remove('hidden'); renderChoices();
         } else if(mode === 'zh_to_audio') {
             display.innerHTML = `${current.zh}<div class="question-sub">請聽發音選出正確選項</div>`;
@@ -235,8 +229,7 @@
             display.innerHTML = `${current.en}<div class="question-sub">請聽發音選出正確選項</div>`;
             areaChoice.classList.remove('hidden'); renderChoices();
         } else {
-            // mode 3 & 4 (聽題目)
-            display.innerHTML = '<span style="font-size:3.5rem; cursor:pointer;" onclick="speak(\''+current.en+'\')">🔊</span><div class="question-sub">(點擊喇叭重聽)</div>';
+            display.innerHTML = '<span style="font-size:3.5rem; cursor:pointer;" onclick="speak(\''+current.en+'\')">🔊</span><div class="question-sub">點擊喇叭重聽</div>';
             areaChoice.classList.remove('hidden'); renderChoices();
             setTimeout(() => speak(current.en), 300);
         }
@@ -248,11 +241,11 @@
         const fb = document.getElementById('spell-feedback');
 
         if(val.toLowerCase() === current.en.toLowerCase()) {
-            isLocked = true; fb.innerHTML = '<span style="color:#00b894">✅ Correct!</span>';
-            speak(current.en); setTimeout(nextQuestion, 600);
+            isLocked = true; fb.innerHTML = '<span style="color:#00b894">Correct!</span>';
+            setTimeout(nextQuestion, 600);
         } else {
-            fb.innerHTML = `<span style="color:#ff7675">❌</span> <span style="font-size:0.8rem; text-decoration:underline; cursor:pointer;" onclick="alert('${current.en}')">偷看答案</span>`;
-            speak(current.en); document.getElementById('ans-input').select();
+            fb.innerHTML = `<span style="color:#ff7675">Wrong!</span> <span style="font-size:0.8rem; text-decoration:underline; cursor:pointer;" onclick="alert('${current.en}')">偷看答案</span>`;
+            document.getElementById('ans-input').select();
         }
     }
 
@@ -290,7 +283,6 @@
             btn.optData = opt; 
 
             if (isAudioMode) {
-                // 測驗 5 & 6 的特殊按鈕
                 btn.innerText = `🔊 選項 ${String.fromCharCode(65 + idx)} (點擊聽音)`;
                 btn.onclick = () => {
                     if (isLocked) return;
@@ -301,7 +293,6 @@
                     document.getElementById('btn-audio-submit').classList.remove('hidden');
                 };
             } else {
-                // 測驗 2, 3, 4 的一般按鈕
                 btn.innerText = opt.text; 
                 if (mode === 'listen_spell') btn.classList.add('evil-font');
                 
@@ -309,11 +300,9 @@
                     if(isLocked) return;
                     if(opt.isCorrect) {
                         isLocked = true; btn.classList.add('correct');
-                        if(mode.includes('listen')) speak(current.en);
                         setTimeout(nextQuestion, 500);
                     } else {
                         btn.classList.add('wrong'); btn.style.opacity = '0.6';
-                        if(mode.includes('listen')) speak(current.en);
                     }
                 };
             }
@@ -321,37 +310,33 @@
         });
     }
 
-    // 測驗5, 6 專用的送出邏輯 (開牌機制)
     function submitAudioChoice() {
         if (isLocked || !selectedOpt || !selectedBtnObj) return;
         isLocked = true;
         document.getElementById('btn-audio-submit').classList.add('hidden');
 
-        // 開牌：把所有按鈕的英文顯示出來
         document.querySelectorAll('.option-btn').forEach(b => {
             let opt = b.optData;
             b.classList.remove('selected');
             if (opt.isCorrect) {
                 b.classList.add('correct');
-                b.innerText = `✅ ${opt.text} (${opt.fullData.zh})`;
+                b.innerText = `O ${opt.text} (${opt.fullData.zh})`;
             } else if (b === selectedBtnObj) {
                 b.classList.add('wrong');
-                b.innerText = `❌ ${opt.text} (${opt.fullData.zh})`;
+                b.innerText = `X ${opt.text} (${opt.fullData.zh})`;
             } else {
                 b.innerText = `${opt.text}`;
             }
         });
 
         if (selectedOpt.isCorrect) {
-            speak(selectedOpt.text);
-            setTimeout(nextQuestion, 1200); // 答對的話，給你1.2秒看一下字再跳下一題
+            setTimeout(nextQuestion, 1200); 
         } else {
-            // 答錯的話，不自動跳下一題，把確認按鈕變成「下一題」
             let nextBtn = document.getElementById('btn-audio-submit');
-            nextBtn.innerText = "繼續下一題 ➔";
+            nextBtn.innerText = "繼續下一題";
             nextBtn.onclick = () => {
                 nextBtn.innerText = "確定送出";
-                nextBtn.onclick = submitAudioChoice; // 復原功能
+                nextBtn.onclick = submitAudioChoice; 
                 nextQuestion();
             };
             nextBtn.classList.remove('hidden');
@@ -360,7 +345,7 @@
 
     function speak(text) {
         if(!text) return;
-        synth.cancel(); // 防呆：清除卡住的語音
+        synth.cancel(); 
         let txt = text.replace(/\(.*\)/, '');
         let u = new SpeechSynthesisUtterance(txt);
         u.lang = 'en-US'; 
