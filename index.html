@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>PVQC</title>
+    <title>PVQC 隨身刷題</title>
     <style>
         body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #f0f2f5; color: #333; margin: 0; padding: 15px; text-align: center; -webkit-tap-highlight-color: transparent; }
         .container { max-width: 600px; margin: 0 auto; background: white; padding: 20px; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
@@ -14,12 +14,7 @@
         
         .log-area { font-size: 0.85rem; color: #e74c3c; text-align: left; background: #fff5f5; padding: 8px; border-radius: 6px; margin-top: 10px; display: none; }
 
-        /* ======== 首頁測驗按鈕排版 ======== 
-           目前設定為 1fr 1fr (代表 2 行，會變成 2x3 的排列)。
-           如果你想改：
-           - 一整排 (1x6)：請改成 grid-template-columns: 1fr;
-           - 3x2 排列：請改成 grid-template-columns: 1fr 1fr 1fr;
-        */
+        /* 首頁測驗按鈕排版 (2x3) */
         .btn-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 15px; }
         
         .btn { padding: 16px 8px; border: none; border-radius: 10px; font-size: 16px; font-weight: 600; cursor: pointer; color: white; transition: all 0.1s; display: flex; align-items: center; justify-content: center;}
@@ -44,7 +39,7 @@
         input[type="text"] { width: 100%; padding: 15px; font-size: 20px; border: 2px solid #dfe6e9; border-radius: 10px; text-align: center; box-sizing: border-box; -webkit-appearance: none; }
         input[type="text"]:focus { border-color: #3498db; }
 
-        /* ======== 測驗中的選項排版 (恢復從上到下) ======== */
+        /* 測驗中的選項排版 (從上到下) */
         #area-choice { display: flex; flex-direction: column; gap: 10px; width: 100%; }
         
         .option-btn { background: #fff; border: 2px solid #f1f2f6; width: 100%; min-height: 60px; padding: 15px; border-radius: 10px; font-size: 1.1rem; color: #2d3436; text-align: left; font-weight: 500; transition: all 0.2s; word-break: break-word;}
@@ -53,13 +48,16 @@
         .option-btn.wrong { background: #ff7675; color: white; border-color: #ff7675; }
         .evil-font { font-family: 'Courier New', Courier, monospace; font-size: 1.25rem; font-weight: bold; letter-spacing: 0.5px; }
         
-        #spell-feedback { height: 35px; margin-top: 10px; font-weight: bold; font-size: 1.5rem; display: flex; align-items: center; justify-content: center;}
+        #spell-feedback { height: 35px; margin-top: 5px; font-weight: bold; font-size: 1.5rem; display: flex; align-items: center; justify-content: center;}
+        
+        /* 字數顯示的樣式 */
+        #char-count { text-align: right; color: #b2bec3; font-size: 0.95rem; margin-top: 5px; font-family: monospace; font-weight: bold; padding-right: 5px;}
     </style>
 </head>
 <body>
 
 <div class="container" id="setup-screen">
-    <h1>PVQC</h1>
+    <h1>PVQC 專業級全真模擬器</h1>
     <textarea id="vocab-input" placeholder="請貼上單字..."></textarea>
     <div id="parse-log" class="log-area"></div>
 
@@ -83,6 +81,7 @@
 
     <div id="area-spell" class="hidden">
         <input type="text" id="ans-input" placeholder="輸入英文..." autocomplete="off" spellcheck="false" autocapitalize="off">
+        <div id="char-count">0 / 0</div>
         <div id="spell-feedback"></div>
         <button class="btn btn-submit" onclick="checkSpell()">送出</button>
     </div>
@@ -225,12 +224,16 @@
         
         areaSpell.classList.add('hidden'); areaChoice.classList.add('hidden');
         document.getElementById('spell-feedback').innerHTML = '';
-        document.getElementById('ans-input').value = '';
+        
+        const ansInput = document.getElementById('ans-input');
+        ansInput.value = '';
 
         if(mode === 'spell') {
             display.innerHTML = current.zh + ' <span style="font-size:1.5rem; cursor:pointer;" onclick="speak(\''+current.en+'\')">🔊</span>';
             areaSpell.classList.remove('hidden');
-            setTimeout(()=>document.getElementById('ans-input').focus(), 100);
+            // 初始化字數計數器
+            document.getElementById('char-count').innerText = `0 / ${current.en.length}`;
+            setTimeout(()=>ansInput.focus(), 100);
         } else if(mode === 'read_choice') {
             display.innerHTML = current.en + ' <span style="font-size:1.5rem; cursor:pointer;" onclick="speak(\''+current.en+'\')">🔊</span>';
             areaChoice.classList.remove('hidden'); renderChoices();
@@ -378,8 +381,16 @@
         document.getElementById('setup-screen').classList.remove('hidden');
     }
 
-    document.getElementById('ans-input').addEventListener('keypress', (e)=>{
+    const ansInputEle = document.getElementById('ans-input');
+    ansInputEle.addEventListener('keypress', (e)=>{
         if(e.key === 'Enter') checkSpell();
+    });
+    
+    // 新增：監聽輸入事件來即時更新字數
+    ansInputEle.addEventListener('input', (e)=>{
+        if(current && mode === 'spell') {
+            document.getElementById('char-count').innerText = `${e.target.value.length} / ${current.en.length}`;
+        }
     });
 </script>
 </body>
