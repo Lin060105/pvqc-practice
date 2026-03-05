@@ -1,0 +1,200 @@
+expansion,擴展:副檔名
+expansion board,擴充卡(板)
+expert system,專家系統
+expert system shell,專家系統(外殼)骨架
+extended partition,延伸分割區
+extensible markup language,延伸標記(籤)語言
+external,外部
+external code,外碼
+external memory,外部記憶體
+extranet,(企業)外部網路
+fair information practices,公平資訊慣例(s)
+fault tolerant,容錯的
+fault tolerant computer system,容錯電腦系統
+feasibility study,可行性研究
+fiber optics,光纖
+fiber-optic cable,光纖纜線
+file allocation table,檔案配置表
+file transfer protocol,檔案傳輸協定
+filter,過濾器
+filtering,過濾
+financial management system,財務管理系統
+firewire,火線
+firmware,韌體
+first in first out,先進先出
+first mover,先行者
+flaming,謾罵
+flat-panel display,平面式顯示器
+floating point,浮點數
+floppy disk,軟式磁碟片
+floppy disk drive,軟式磁碟機
+folksonomy,公眾分類法;大眾分類法
+footer,頁尾
+force,力;力量;武力;影響力
+force feedback,力回饋
+foreign key,外(來)鍵
+format,格式化
+form,表單
+format painter,複製格式
+formula,公式
+fourth generation language,第四代語言
+fourth generation network,第四代網路
+free,免費
+franchiser,加盟者;經銷商;代理商
+freemium,免費加值
+frequently used list,常用清單
+frequently used program,常用程式
+full-duplex,全雙工
+function argument tooltip,函數參數提示
+function name,函數名稱
+functional business system,功能性的企業(業務)系統
+functional requirement,功能性需求
+functional-specific application program,特定用途應用程式
+fuzzy,模糊的
+fuzzy logic,模糊邏輯
+Gantt chart,甘特圖
+GDSS,群組決策支援系統(英文簡稱)
+general control,一般控制
+general-purpose application program,一般用途應用程式
+genetic algorithm,基因演算法
+global business driver,全球商務驅動
+global information technology management,全球資訊科技管理
+global system for mobile communication,全球行動通訊系統
+global variable,全域變數
+goal-seeking analysis,目標搜尋分析
+golden rule,黃金原則(規則)
+graphical user interface,圖形化使用介面
+graphics program,圖形程式
+grid,網格:電網
+grid computing,網格運算
+group decision support system,群組決策支援系統
+groupware,群組軟體
+GSM,全球行動通訊系統(英文簡稱)
+gutter,裝訂線
+gutter margin,裝訂邊
+hacking,駭客入侵
+half-duplex,半雙工
+hard memory failure,記憶體硬體故障
+hard page break,硬分頁符號
+hardware,硬體
+hardware resource,硬體資源
+head crash,磁頭碰撞
+header,頁首
+header row,標題列
+Hewlett-Packard,惠普(一種知名電腦品牌)
+hierarchical structure,階層式架構
+high availability computing,高度可用性計(運)算
+high capacity,高容量
+high capacity floppy disk,高容量軟碟
+high definition multimedia interface,高清晰度多媒體介面
+high level language,高階語言
+hit counter,點選計數器
+hotspot,熱點
+human factor feasibility,人為因素可行性
+human resource information system,人力資源資訊系統
+hybrid computing model,混合式運算模型
+hybrid model,混合式模型
+hypertext link,超文字連結
+Hz,赫茲(的英文簡稱)
+hypertext transfer protocol secure,安全(加密)超文字傳輸協定
+IA,資訊家電(英文簡稱)
+ID,身分(的英文簡稱)
+identification system,(身分)辨識系統
+identity,身分;確認
+identity theft,身分盜竊
+IM,即時通訊(縮寫)
+image scanner,影像掃描器
+impact analysis,影響分析
+impact printer,撞擊式印表機
+implementation,執行;實作
+inference,推理
+inference engine,推理引擎
+information asymmetry,資訊不對稱
+information density,資訊密集度
+information policy,資訊政策
+information product,資訊產品
+information security,資訊安全
+information system activity,資訊系統活動
+information system control,資訊系統控制
+information system department,資訊系統部門
+information system literacy,資訊系統素養
+information system manager,資訊系統經理(管理者)
+information system model,資訊系統模型
+information system plan,資訊系統計畫
+information technology infrastructure,資訊科技基礎建設
+informed consent,告知後同意
+infrared,紅外線
+inheritance,繼承
+ink jet printer,噴墨印表機
+input control,輸入控制
+inspection,檢測;檢查;視察
+institute of electrical and electronics engineers,國際電機電子工程協會
+instruction,指令
+integer,整數
+integrated services digital network,整體服務數位網路
+intellectual,理智做事者;知識份子;智力的;聰明的
+intellectual property rights,智慧財產權(s)
+intellectual property theft,智慧財產權偷盜(或剽竊)
+intelligent,聰明的;智慧的;智能的
+intelligent agent,智慧(能)代理人
+intelligent agent shopping bot,智能(慧)型代理購物機器人
+intelligent technology,智能技術
+intelligent transportation system,智慧型運輸系統
+interactive,互動式的
+interactive marketing,互動行銷
+interenterprise information system,跨企業資訊系統;企業間的資訊系統
+interface,介面
+intermediate,中間的;中級的
+internal supply chain,內部供應鏈
+international standard book number,國際標準書號
+International organization for standardization,國際標準組織
+Internet and telecommunication technology,網際網路與電信通訊科技
+Internet service provider,網際網路服務提供者
+Internet message access protocol,網路訊息存取通訊協定
+Internet technology,網際網路科技
+interpret,直譯
+interorganizational system,跨組織系統
+interpreter,直譯器
+Intranet,(企業)內部網路
+intrusion,入侵;侵擾
+intrusion detection system,入侵偵測系統
+investment workstations,投資工作站
+ionizing,游離輻射
+IP datagram,IP資料包:IP數據包
+IPR,智慧財產權(英文簡稱)
+IS operations management,資訊系統作業管理
+IS specialist,資訊系統專家
+ISDN,整體服務數位網路(英文簡稱)
+ISP,網際網路服務提供者(英文簡稱)
+IT architecture,資訊科技架構
+IT planning process,資訊科技規劃程序
+IT staff planning,資訊科技人員規劃
+ITS,智慧型運輸系統(英文簡稱)
+IU,輸入單元(英文簡稱)
+JAD,聯合應用程式設計(英文簡稱)
+JIT,及時(英文簡稱)
+joint application design,聯合應用程式設計
+joystick,搖桿
+just-in-time,及時
+just-in-time strategy,及時策略
+key,關鍵(值)
+key field,鍵值欄位
+keylogger,鍵盤測錄程式
+kiosk,資訊服務站
+KM,知識管理(的英文簡稱)
+KMS,知識管理系統(英文簡稱)
+knowledge base,知識庫
+knowledge economy,知識經濟
+knowledge management,知識管理
+knowledge management system,知識管理系統
+knowledge network system,知識網路系統
+knowledge work system,知識工作系統
+knowledge-creating company,知識創造公司
+language translator,語言翻譯器
+laptop computer,膝上型電腦
+laser diode,雷射二極體
+last in first out,後進先出
+learning management system,學習管理系統
+legacy,遺留:舊的:傳統的
+lease line,專線
+legacy system,遺留系統;舊的系統;傳統的系統
