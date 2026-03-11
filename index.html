@@ -165,19 +165,31 @@
         
         for (let i = 0; i < lines.length; i++) {
             let line = lines[i];
-            let hasZh = /[^\x00-\x7F]/.test(line); let hasEn = /[a-zA-Z]/.test(line);
+            
+            // 💡 修正 1：優先找「逗號」，從逗號切開最精準！
+            let commaIdx = line.indexOf(',');
+            if (commaIdx > 0) {
+                let en = line.substring(0, commaIdx).trim();
+                let zh = line.substring(commaIdx + 1).trim();
+                parsed.push({ en: en, zh: zh });
+                continue;
+            }
 
+            // 💡 備用方案：如果沒逗號，用第一個中文字來切
+            let hasZh = /[^\x00-\x7F]/.test(line); let hasEn = /[a-zA-Z]/.test(line);
             if (hasZh && hasEn) {
                 let match = line.match(/[^\x00-\x7F]/);
                 let splitIdx = match ? match.index : -1;
                 if (splitIdx > 0) {
-                    parsed.push({ en: line.slice(0, splitIdx).trim().replace(/,$/, ''), zh: line.slice(splitIdx).trim() });
+                    parsed.push({ en: line.slice(0, splitIdx).trim(), zh: line.slice(splitIdx).trim() });
                     continue;
                 }
             }
+            
+            // 💡 處理中英文分開兩行的狀況
             if (i + 1 < lines.length) {
                 let next = lines[i+1];
-                if (hasEn && !hasZh && /[^\x00-\x7F]/.test(next)) {
+                if (/[a-zA-Z]/.test(line) && !/[^\x00-\x7F]/.test(line) && /[^\x00-\x7F]/.test(next)) {
                     parsed.push({ en: line, zh: next }); i++; continue;
                 }
             }
@@ -231,7 +243,6 @@
         if(mode === 'spell') {
             display.innerHTML = current.zh + ' <span style="font-size:1.5rem; cursor:pointer;" onclick="speak(\''+current.en+'\')">🔊</span>';
             areaSpell.classList.remove('hidden');
-            // 初始化字數計數器
             document.getElementById('char-count').innerText = `0 / ${current.en.length}`;
             setTimeout(()=>ansInput.focus(), 100);
         } else if(mode === 'read_choice') {
@@ -260,7 +271,6 @@
             fb.innerHTML = '<span style="color:#00b894">O</span>';
             setTimeout(nextQuestion, 600);
         } else {
-            // 點擊 X 會跳出正確答案
             fb.innerHTML = `<span style="color:#ff7675; cursor:pointer;" onclick="alert('${current.en}')">X</span>`;
             document.getElementById('ans-input').select();
         }
@@ -386,7 +396,6 @@
         if(e.key === 'Enter') checkSpell();
     });
     
-    // 新增：監聽輸入事件來即時更新字數
     ansInputEle.addEventListener('input', (e)=>{
         if(current && mode === 'spell') {
             document.getElementById('char-count').innerText = `${e.target.value.length} / ${current.en.length}`;
